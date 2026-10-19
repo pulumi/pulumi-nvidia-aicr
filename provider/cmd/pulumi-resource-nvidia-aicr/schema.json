@@ -13,7 +13,7 @@
   "homepage": "https://github.com/pulumi/pulumi-nvidia-aicr",
   "license": "Apache-2.0",
   "repository": "https://github.com/pulumi/pulumi-nvidia-aicr",
-  "logoUrl": "https://raw.githubusercontent.com/pulumi/pulumi-nvidia-aicr/main/sdk/dotnet/logo.png",
+  "logoUrl": "https://raw.githubusercontent.com/pulumi/pulumi-nvidia-aicr/main/assets/logo.svg",
   "pluginDownloadURL": "github://api.github.com/pulumi/pulumi-nvidia-aicr",
   "publisher": "Pulumi",
   "language": {

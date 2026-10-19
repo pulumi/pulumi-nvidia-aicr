@@ -32,7 +32,7 @@ func NewProvider() p.Provider {
 			Repository:        "https://github.com/pulumi/pulumi-nvidia-aicr",
 			Publisher:         "Pulumi",
 			PluginDownloadURL: "github://api.github.com/pulumi/pulumi-nvidia-aicr",
-			LogoURL:           "https://raw.githubusercontent.com/pulumi/pulumi-nvidia-aicr/main/sdk/dotnet/logo.png",
+			LogoURL:           "https://raw.githubusercontent.com/pulumi/pulumi-nvidia-aicr/main/assets/logo.svg",
 			License:           "Apache-2.0",
 			LanguageMap: map[string]any{
 				"go": map[string]any{

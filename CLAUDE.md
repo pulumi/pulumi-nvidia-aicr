@@ -78,6 +78,18 @@ published support matrix) and add adapter tests for the new combination.
 - The `os` input has no default: unset means OS-agnostic resolution (required
   for `kind`, which binds no OS); some combinations require an explicit OS
   (gke → `cos`, platform recipes → `ubuntu`)
+- Every Kubernetes client this provider constructs itself goes through
+  `aicr.buildKubeClient`, which stamps `version.UserAgent()`
+  (`pulumi-nvidia-aicr/<version>`) onto the rest.Config — the registry asks
+  packages to make their traffic attributable. Recipe deployment (Pulumi
+  Kubernetes provider, separate process) and the SDK's snapshot/validator
+  harness build their own clients and carry client-go's default agent
+  instead; the AICR SDK has no `WithUserAgent`, so covering those needs an
+  upstream change. Any new API client added here sets the agent
+- The registry package logo is `assets/logo.svg`, NOT `sdk/dotnet/logo.png`:
+  `make dotnet_sdk` does `rm -rf sdk/dotnet`, so anything kept there is lost
+  on the next SDK regeneration. `sdk/dotnet/logo.png` remains the NuGet
+  package icon only
 - Friendly validation stays provider-side (`validateArgs` /
   `validateCriteria` / `validateCompatibility`) so users get precise errors
   before SDK resolution; ValidationRun shares `validateCriteria` so both

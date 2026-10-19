@@ -49,6 +49,10 @@ import (
 	vlabels "github.com/NVIDIA/aicr/pkg/validator/labels"
 	corev1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	"k8s.io/client-go/kubernetes"
+	"k8s.io/client-go/rest"
+
+	"github.com/pulumi/pulumi-nvidia-aicr/provider/pkg/version"
 )
 
 // Readiness pre-flight failures carry no typed sentinel in SDK v0.18.0:
@@ -472,11 +476,41 @@ func agentImage(registryOverride string) (string, error) {
 	return image, nil
 }
 
+// buildKubeClient builds the Kubernetes client this provider talks to the
+// API server with, stamped with version.UserAgent() so the calls are
+// attributable to this provider and build rather than to client-go's
+// default agent.
+//
+// Kubeconfig resolution stays the SDK's: BuildKubeClient hands back the
+// *rest.Config it assembled (explicit path, multi-file KUBECONFIG, or
+// in-cluster), and only the User-Agent is ours. Its clientset is discarded
+// rather than reused — constructing one opens no connection, and there is
+// no way to set the agent on a client-go client after the fact.
+func buildKubeClient(kubeconfigPath string) (*kubernetes.Clientset, error) {
+	config, err := kubeClientConfig(kubeconfigPath)
+	if err != nil {
+		return nil, err
+	}
+	return kubernetes.NewForConfig(config)
+}
+
+// kubeClientConfig is the User-Agent-stamping step on its own, so a test can
+// assert the agent without standing up an API server.
+func kubeClientConfig(kubeconfigPath string) (*rest.Config, error) {
+	_, config, err := k8sclient.BuildKubeClient(kubeconfigPath)
+	if err != nil {
+		return nil, err
+	}
+	config = rest.CopyConfig(config)
+	config.UserAgent = version.UserAgent()
+	return config, nil
+}
+
 // sweepValidatorJobs best-effort deletes validator Jobs labeled with runID in
 // the validation namespace after a canceled/expired run. Fresh context: the
 // parent ctx is already dead. Errors are returned for logging only.
 func sweepValidatorJobs(kubeconfigPath, namespace, runID string) error {
-	clientset, _, err := k8sclient.BuildKubeClient(kubeconfigPath)
+	clientset, err := buildKubeClient(kubeconfigPath)
 	if err != nil {
 		return fmt.Errorf("building Kubernetes client for validator Job sweep: %w", err)
 	}

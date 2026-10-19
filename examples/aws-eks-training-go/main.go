@@ -1,9 +1,9 @@
 // AWS EKS + NVIDIA AICR H100 Training Stack
 //
 // This example creates a complete GPU training environment:
-//   1. An EKS cluster with H100 GPU worker nodes
-//   2. The full AICR-validated software stack for distributed training
-//      including GPU Operator, Kubeflow Trainer, monitoring, and more.
+//  1. An EKS cluster with H100 GPU worker nodes
+//  2. The full AICR-validated software stack for distributed training
+//     including GPU Operator, Kubeflow Trainer, monitoring, and more.
 //
 // COST WARNING: p5.48xlarge instances cost approximately $98.32/hr each.
 // This example provisions 2 nodes (~$196/hr). Remember to run
@@ -163,8 +163,8 @@ func main() {
 				Os:          pulumi.StringPtr("ubuntu"),
 			},
 			RecipeDataVersion: gpuStack.RecipeVersion, // assert same recipe data as deployed
-			Kubeconfig: cluster.KubeconfigJson,
-			Triggers:   pulumi.Array{gpuStack.DeployedComponents}, // re-validate when the stack changes
+			Kubeconfig:        cluster.KubeconfigJson,
+			Triggers:          pulumi.Array{gpuStack.DeployedComponents}, // re-validate when the stack changes
 		})
 		if err != nil {
 			return err

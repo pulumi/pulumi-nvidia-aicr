@@ -1,9 +1,9 @@
 // AWS EKS + NVIDIA AICR H100 vLLM Inference Stack
 //
 // This example creates a complete GPU inference environment:
-//   1. An EKS cluster with H100 GPU worker nodes
-//   2. The full AICR-validated software stack for vLLM model serving
-//      including GPU Operator, NIM Operator, KGateway, monitoring, and more.
+//  1. An EKS cluster with H100 GPU worker nodes
+//  2. The full AICR-validated software stack for vLLM model serving
+//     including GPU Operator, NIM Operator, KGateway, monitoring, and more.
 //
 // The NIM (NVIDIA Inference Microservices) platform provides optimized
 // vLLM-based model serving with automatic scaling, health checks, and
@@ -168,8 +168,8 @@ func main() {
 				Os:          pulumi.StringPtr("ubuntu"),
 			},
 			RecipeDataVersion: gpuStack.RecipeVersion, // assert same recipe data as deployed
-			Kubeconfig: cluster.KubeconfigJson,
-			Triggers:   pulumi.Array{gpuStack.DeployedComponents}, // re-validate when the stack changes
+			Kubeconfig:        cluster.KubeconfigJson,
+			Triggers:          pulumi.Array{gpuStack.DeployedComponents}, // re-validate when the stack changes
 		})
 		if err != nil {
 			return err

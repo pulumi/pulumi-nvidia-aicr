@@ -3,7 +3,7 @@
 //
 // Prerequisites:
 //   - kind installed and a cluster running:
-//       kind create cluster --name aicr-dev
+//     kind create cluster --name aicr-dev
 //   - kubectl context pointing at it (kind sets this automatically)
 //
 // The `kind` overlay disables driver installation and several other
@@ -27,10 +27,10 @@ func main() {
 		}
 
 		gpuStack, err := aicr.NewClusterStack(ctx, "kind-aicr", &aicr.ClusterStackArgs{
-			Accelerator:  "h100",
-			Service:      "kind",
-			Intent:       intent,
-			SkipAwait:    pulumi.BoolRef(true), // kind clusters often can't satisfy GPU readiness; don't block
+			Accelerator: "h100",
+			Service:     "kind",
+			Intent:      intent,
+			SkipAwait:   pulumi.BoolRef(true), // kind clusters often can't satisfy GPU readiness; don't block
 			SkipComponents: pulumi.ToStringArray([]string{
 				"kube-prometheus-stack",
 			}),
@@ -61,8 +61,8 @@ func main() {
 					Intent:      pulumi.String(intent),
 				},
 				RecipeDataVersion: gpuStack.RecipeVersion,                    // assert same recipe data as deployed
-				RequireGpu: pulumi.Bool(false),                        // kind has no GPU nodes
-				Triggers:   pulumi.Array{gpuStack.DeployedComponents}, // re-run when the stack changes
+				RequireGpu:        pulumi.Bool(false),                        // kind has no GPU nodes
+				Triggers:          pulumi.Array{gpuStack.DeployedComponents}, // re-run when the stack changes
 			})
 			if err != nil {
 				return err

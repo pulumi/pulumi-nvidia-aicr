@@ -1,9 +1,9 @@
 // Azure AKS + NVIDIA AICR H100 Training Stack
 //
 // This example creates a complete GPU training environment:
-//   1. An AKS cluster with H100 GPU worker nodes
-//   2. The full AICR-validated software stack for distributed training
-//      including GPU Operator, Kubeflow Trainer, monitoring, and more.
+//  1. An AKS cluster with H100 GPU worker nodes
+//  2. The full AICR-validated software stack for distributed training
+//     including GPU Operator, Kubeflow Trainer, monitoring, and more.
 //
 // COST WARNING: Standard_ND96isr_H100_v5 VMs cost approximately $40/hr each.
 // This example provisions 2 GPU nodes (~$80/hr). Remember to run
@@ -148,8 +148,8 @@ func main() {
 				Os:          pulumi.StringPtr("ubuntu"),
 			},
 			RecipeDataVersion: gpuStack.RecipeVersion, // assert same recipe data as deployed
-			Kubeconfig: kubeconfig,
-			Triggers:   pulumi.Array{gpuStack.DeployedComponents}, // re-validate when the stack changes
+			Kubeconfig:        kubeconfig,
+			Triggers:          pulumi.Array{gpuStack.DeployedComponents}, // re-validate when the stack changes
 		})
 		if err != nil {
 			return err

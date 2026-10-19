@@ -1,9 +1,9 @@
 // GCP GKE + NVIDIA AICR H100 Training Stack
 //
 // This example creates a complete GPU training environment:
-//   1. A GKE cluster with a dedicated H100 GPU node pool
-//   2. The full AICR-validated software stack for distributed training
-//      including GPU Operator, Kubeflow Trainer, monitoring, and more.
+//  1. A GKE cluster with a dedicated H100 GPU node pool
+//  2. The full AICR-validated software stack for distributed training
+//     including GPU Operator, Kubeflow Trainer, monitoring, and more.
 //
 // COST WARNING: a3-highgpu-8g instances cost approximately $30/hr each
 // (8x NVIDIA H100 80GB per node). This example provisions 2 nodes (~$60/hr).
@@ -33,9 +33,9 @@ func main() {
 
 		// Create the GKE cluster (we remove the default node pool and manage our own)
 		cluster, err := container.NewCluster(ctx, clusterName, &container.ClusterArgs{
-			InitialNodeCount:       pulumi.Int(1),
-			RemoveDefaultNodePool:  pulumi.Bool(true),
-			DeletionProtection:     pulumi.Bool(false),
+			InitialNodeCount:      pulumi.Int(1),
+			RemoveDefaultNodePool: pulumi.Bool(true),
+			DeletionProtection:    pulumi.Bool(false),
 			ResourceLabels: pulumi.StringMap{
 				"nvidia-aicr": pulumi.String("true"),
 				"gpu-type":    pulumi.String("h100"),
@@ -152,8 +152,8 @@ users:
 				Os:          pulumi.StringPtr("cos"),
 			},
 			RecipeDataVersion: gpuStack.RecipeVersion, // assert same recipe data as deployed
-			Kubeconfig: kubeconfig,
-			Triggers:   pulumi.Array{gpuStack.DeployedComponents}, // re-validate when the stack changes
+			Kubeconfig:        kubeconfig,
+			Triggers:          pulumi.Array{gpuStack.DeployedComponents}, // re-validate when the stack changes
 		})
 		if err != nil {
 			return err

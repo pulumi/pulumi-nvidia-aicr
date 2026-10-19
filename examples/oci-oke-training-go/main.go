@@ -1,11 +1,11 @@
 // Oracle Cloud OKE + NVIDIA AICR GB200 Training Stack
 //
 // This example creates a complete GPU training environment on OCI:
-//   1. A VCN (Virtual Cloud Network) with a subnet
-//   2. An OKE (Oracle Kubernetes Engine) cluster
-//   3. A GPU node pool with BM.GPU.GB200.4 bare-metal shapes
-//   4. The full AICR-validated software stack for distributed training
-//      including GPU Operator, Kubeflow Trainer, monitoring, and more.
+//  1. A VCN (Virtual Cloud Network) with a subnet
+//  2. An OKE (Oracle Kubernetes Engine) cluster
+//  3. A GPU node pool with BM.GPU.GB200.4 bare-metal shapes
+//  4. The full AICR-validated software stack for distributed training
+//     including GPU Operator, Kubeflow Trainer, monitoring, and more.
 //
 // This is the only example using NVIDIA GB200 (Grace Blackwell) GPUs --
 // the newest and most powerful NVIDIA data-center GPU architecture,
@@ -110,11 +110,11 @@ func main() {
 
 		// Create a subnet for the OKE cluster and node pool
 		subnet, err := core.NewSubnet(ctx, "oke-subnet", &core.SubnetArgs{
-			CompartmentId:  pulumi.String(compartmentId),
-			VcnId:          vcn.ID(),
-			CidrBlock:      pulumi.String("10.0.1.0/24"),
-			DisplayName:    pulumi.Sprintf("%s-subnet", clusterName),
-			RouteTableId:   routeTable.ID(),
+			CompartmentId:   pulumi.String(compartmentId),
+			VcnId:           vcn.ID(),
+			CidrBlock:       pulumi.String("10.0.1.0/24"),
+			DisplayName:     pulumi.Sprintf("%s-subnet", clusterName),
+			RouteTableId:    routeTable.ID(),
 			SecurityListIds: pulumi.StringArray{securityList.ID()},
 			DnsLabel:        pulumi.StringPtr("okesubnet"),
 		})
@@ -124,10 +124,10 @@ func main() {
 
 		// Create the OKE cluster
 		cluster, err := containerengine.NewCluster(ctx, clusterName, &containerengine.ClusterArgs{
-			CompartmentId:    pulumi.String(compartmentId),
-			VcnId:            vcn.ID(),
+			CompartmentId:     pulumi.String(compartmentId),
+			VcnId:             vcn.ID(),
 			KubernetesVersion: pulumi.String("v1.30.1"),
-			Name:             pulumi.String(clusterName),
+			Name:              pulumi.String(clusterName),
 			Options: containerengine.ClusterOptionsArgs{
 				ServiceLbSubnetIds: pulumi.StringArray{subnet.ID()},
 				KubernetesNetworkConfig: containerengine.ClusterOptionsKubernetesNetworkConfigArgs{
@@ -144,11 +144,11 @@ func main() {
 		// BM.GPU.GB200.4 provides 4 NVIDIA GB200 GPUs per bare-metal node --
 		// the most powerful GPU shape available on OCI for AI/ML training.
 		_, err = containerengine.NewNodePool(ctx, "gpu-nodes", &containerengine.NodePoolArgs{
-			CompartmentId:    pulumi.String(compartmentId),
-			ClusterId:        cluster.ID(),
+			CompartmentId:     pulumi.String(compartmentId),
+			ClusterId:         cluster.ID(),
 			KubernetesVersion: pulumi.String("v1.30.1"),
-			Name:             pulumi.Sprintf("%s-gb200-pool", clusterName),
-			NodeShape:        pulumi.String("BM.GPU.GB200.4"),
+			Name:              pulumi.Sprintf("%s-gb200-pool", clusterName),
+			NodeShape:         pulumi.String("BM.GPU.GB200.4"),
 			NodeConfigDetails: containerengine.NodePoolNodeConfigDetailsArgs{
 				Size: pulumi.Int(nodeCount),
 				PlacementConfigs: containerengine.NodePoolNodeConfigDetailsPlacementConfigArray{
@@ -215,8 +215,8 @@ func main() {
 				Os:          pulumi.StringPtr("ubuntu"),
 			},
 			RecipeDataVersion: gpuStack.RecipeVersion, // assert same recipe data as deployed
-			Kubeconfig: kubeconfig.Content(),
-			Triggers:   pulumi.Array{gpuStack.DeployedComponents}, // re-validate when the stack changes
+			Kubeconfig:        kubeconfig.Content(),
+			Triggers:          pulumi.Array{gpuStack.DeployedComponents}, // re-validate when the stack changes
 		})
 		if err != nil {
 			return err

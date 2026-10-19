@@ -1,0 +1,38 @@
+name: Free disk space
+description: >
+  Deletes preinstalled toolchains no job in this repository uses, to make
+  room for the provider build.
+
+  Why this is needed: the provider links against the AICR SDK, client-go,
+  Helm, and the AWS/Azure/GCP SDKs that sigstore pulls in. On a stock
+  ubuntu-latest runner the module cache plus the build cache plus the link
+  step exhaust the disk, and the build dies at link time with
+  "mapping output file failed: no space left on device" — a failure that
+  looks nothing like the disk problem it is.
+
+  Everything removed here is a language toolchain the workflows never touch.
+  Deliberately NOT removed: /usr/share/dotnet (setup-dotnet installs there,
+  and the dotnet SDK job needs it) and the Go/Node/Python tool caches that
+  the setup-* actions populate.
+runs:
+  using: composite
+  steps:
+    - name: Remove unused preinstalled toolchains
+      shell: bash
+      run: |
+        set -u
+        echo "disk before:"
+        df -h / | tail -1
+        # Best-effort: the runner image's contents drift, so a path that has
+        # already gone away must not fail the job.
+        sudo rm -rf \
+          /usr/local/lib/android \
+          /opt/ghc \
+          /usr/local/.ghcup \
+          /usr/local/share/boost \
+          /usr/share/swift \
+          /opt/hostedtoolcache/CodeQL \
+          2>/dev/null || true
+        sudo docker image prune --all --force >/dev/null 2>&1 || true
+        echo "disk after:"
+        df -h / | tail -1

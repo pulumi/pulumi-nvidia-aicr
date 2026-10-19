@@ -10,8 +10,8 @@ using Pulumi;
 using Pulumi.Aws.Ec2;
 using Pulumi.Aws.Ec2.Inputs;
 using Pulumi.Eks;
-using Pulumi.Labs.NvidiaAicr;
-using Pulumi.Labs.NvidiaAicr.Inputs;
+using Pulumi.NvidiaAicr;
+using Pulumi.NvidiaAicr.Inputs;
 
 return await Deployment.RunAsync(() =>
 {

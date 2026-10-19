@@ -1,9 +1,9 @@
-module github.com/pulumi-labs/pulumi-nvidia-aicr/examples/azure-aks-training-go
+module github.com/pulumi/pulumi-nvidia-aicr/examples/azure-aks-training-go
 
 go 1.27.0
 
 require (
-	github.com/pulumi-labs/pulumi-nvidia-aicr/sdk/go/nvidiaaicr v0.3.0
+	github.com/pulumi/pulumi-nvidia-aicr/sdk/go/nvidiaaicr v0.3.0
 	github.com/pulumi/pulumi-azure-native-sdk/containerservice/v2 v2.92.2
 	github.com/pulumi/pulumi-azure-native-sdk/resources/v2 v2.92.2
 	github.com/pulumi/pulumi/sdk/v3 v3.242.0

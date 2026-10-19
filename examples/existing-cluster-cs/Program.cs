@@ -10,8 +10,8 @@
 //   pulumi up
 using System.Collections.Generic;
 using Pulumi;
-using Pulumi.Labs.NvidiaAicr;
-using Pulumi.Labs.NvidiaAicr.Inputs;
+using Pulumi.NvidiaAicr;
+using Pulumi.NvidiaAicr.Inputs;
 
 return await Deployment.RunAsync(() =>
 {

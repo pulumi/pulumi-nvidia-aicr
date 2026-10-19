@@ -28,20 +28,20 @@ func NewProvider() p.Provider {
 			DisplayName:       "NVIDIA AI Cluster Runtime",
 			Description:       "Deploy validated NVIDIA AI Cluster Runtime (AICR) recipes for GPU-accelerated Kubernetes clusters.",
 			Keywords:          []string{"pulumi", "nvidia", "aicr", "gpu", "kubernetes", "category/cloud"},
-			Homepage:          "https://github.com/pulumi-labs/pulumi-nvidia-aicr",
-			Repository:        "https://github.com/pulumi-labs/pulumi-nvidia-aicr",
-			Publisher:         "Pulumi Labs",
-			PluginDownloadURL: "github://api.github.com/pulumi-labs/pulumi-nvidia-aicr",
-			LogoURL:           "https://raw.githubusercontent.com/pulumi-labs/pulumi-nvidia-aicr/main/sdk/dotnet/logo.png",
+			Homepage:          "https://github.com/pulumi/pulumi-nvidia-aicr",
+			Repository:        "https://github.com/pulumi/pulumi-nvidia-aicr",
+			Publisher:         "Pulumi",
+			PluginDownloadURL: "github://api.github.com/pulumi/pulumi-nvidia-aicr",
+			LogoURL:           "https://raw.githubusercontent.com/pulumi/pulumi-nvidia-aicr/main/sdk/dotnet/logo.png",
 			License:           "Apache-2.0",
 			LanguageMap: map[string]any{
 				"go": map[string]any{
-					"importBasePath":                 "github.com/pulumi-labs/pulumi-nvidia-aicr/sdk/go/nvidiaaicr",
+					"importBasePath":                 "github.com/pulumi/pulumi-nvidia-aicr/sdk/go/nvidiaaicr",
 					"generateResourceContainerTypes": true,
 					"respectSchemaVersion":           true,
 				},
 				"nodejs": map[string]any{
-					"packageName":          "@pulumi-labs/nvidia-aicr",
+					"packageName":          "@pulumi/nvidia-aicr",
 					"packageDescription":   "Deploy validated NVIDIA AI Cluster Runtime (AICR) recipes for GPU-accelerated Kubernetes clusters.",
 					"respectSchemaVersion": true,
 					"dependencies": map[string]any{
@@ -53,7 +53,7 @@ func NewProvider() p.Provider {
 					},
 				},
 				"python": map[string]any{
-					"packageName":          "pulumi_labs_nvidia_aicr",
+					"packageName":          "pulumi_nvidia_aicr",
 					"respectSchemaVersion": true,
 					"requires": map[string]any{
 						"pulumi": ">=3.165.0,<4.0.0",
@@ -63,14 +63,14 @@ func NewProvider() p.Provider {
 					},
 				},
 				"csharp": map[string]any{
-					"rootNamespace":        "Pulumi.Labs",
+					"rootNamespace":        "Pulumi",
 					"respectSchemaVersion": true,
 					"packageReferences": map[string]any{
 						"Pulumi": "3.*",
 					},
 				},
 				"java": map[string]any{
-					"basePackage":          "com.pulumi.labs",
+					"basePackage":          "com.pulumi",
 					"respectSchemaVersion": true,
 					"dependencies": map[string]any{
 						// Maven Central rejects '+' in dependency versions, so

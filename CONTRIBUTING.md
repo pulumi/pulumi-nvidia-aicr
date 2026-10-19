@@ -13,7 +13,7 @@ You will need:
 Clone, build, and test:
 
 ```bash
-git clone https://github.com/pulumi-labs/pulumi-nvidia-aicr.git
+git clone https://github.com/pulumi/pulumi-nvidia-aicr.git
 cd pulumi-nvidia-aicr
 make provider          # build the provider binary into ./bin/
 make test              # run unit tests

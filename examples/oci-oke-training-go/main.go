@@ -19,7 +19,7 @@
 package main
 
 import (
-	aicr "github.com/pulumi-labs/pulumi-nvidia-aicr/sdk/go/nvidiaaicr"
+	aicr "github.com/pulumi/pulumi-nvidia-aicr/sdk/go/nvidiaaicr"
 	"github.com/pulumi/pulumi-oci/sdk/v2/go/oci/containerengine"
 	"github.com/pulumi/pulumi-oci/sdk/v2/go/oci/core"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"

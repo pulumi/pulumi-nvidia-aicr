@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Pulumi.Serialization;
 using Pulumi;
 
-namespace Pulumi.Labs.NvidiaAicr
+namespace Pulumi.NvidiaAicr
 {
     /// <summary>
     /// Runs an AICR recipe's empirical validation (cluster snapshot +
@@ -254,7 +254,7 @@ namespace Pulumi.Labs.NvidiaAicr
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                PluginDownloadURL = "github://api.github.com/pulumi-labs/pulumi-nvidia-aicr",
+                PluginDownloadURL = "github://api.github.com/pulumi/pulumi-nvidia-aicr",
                 AdditionalSecretOutputs =
                 {
                     "kubeconfig",

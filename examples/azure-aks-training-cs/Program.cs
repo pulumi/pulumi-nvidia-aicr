@@ -12,8 +12,8 @@ using Pulumi;
 using Pulumi.AzureNative.ContainerService;
 using Pulumi.AzureNative.ContainerService.Inputs;
 using Pulumi.AzureNative.Resources;
-using Pulumi.Labs.NvidiaAicr;
-using Pulumi.Labs.NvidiaAicr.Inputs;
+using Pulumi.NvidiaAicr;
+using Pulumi.NvidiaAicr.Inputs;
 using Deployment = Pulumi.Deployment;
 using ResourceIdentityType = Pulumi.AzureNative.ContainerService.ResourceIdentityType;
 

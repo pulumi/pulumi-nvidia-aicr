@@ -33,7 +33,7 @@ import (
 	"github.com/stretchr/testify/require"
 	"k8s.io/client-go/tools/clientcmd"
 
-	"github.com/pulumi-labs/pulumi-nvidia-aicr/provider/pkg/aicr"
+	"github.com/pulumi/pulumi-nvidia-aicr/provider/pkg/aicr"
 )
 
 // withValidateFake swaps the validateFn seam for the duration of a test and

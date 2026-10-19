@@ -19,7 +19,7 @@ PREEMPTIBLE_NVIDIA_H100_GPUS + GPUS_ALL_REGIONS):
 
 import pulumi
 import pulumi_gcp as gcp
-import pulumi_labs_nvidia_aicr as aicr
+import pulumi_nvidia_aicr as aicr
 
 config = pulumi.Config()
 cluster_name = config.get("clusterName") or "aicr-training"

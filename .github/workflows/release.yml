@@ -49,7 +49,7 @@ jobs:
           if [ "$GOOS" = "windows" ]; then ext=".exe"; fi
           out="dist/pulumi-resource-nvidia-aicr${ext}"
           (cd provider && go build \
-            -ldflags "-X github.com/pulumi-labs/pulumi-nvidia-aicr/provider/pkg/version.Version=${{ steps.ver.outputs.version }}" \
+            -ldflags "-X github.com/pulumi/pulumi-nvidia-aicr/provider/pkg/version.Version=${{ steps.ver.outputs.version }}" \
             -o "../${out}" \
             ./cmd/pulumi-resource-nvidia-aicr)
           tar -czf "dist/pulumi-resource-nvidia-aicr-v${{ steps.ver.outputs.version }}-${GOOS}-${GOARCH}.tar.gz" \

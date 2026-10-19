@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Pulumi.Serialization;
 using Pulumi;
 
-namespace Pulumi.Labs.NvidiaAicr
+namespace Pulumi.NvidiaAicr
 {
     [NvidiaAicrResourceType("pulumi:providers:nvidia-aicr")]
     public partial class Provider : global::Pulumi.ProviderResource
@@ -30,7 +30,7 @@ namespace Pulumi.Labs.NvidiaAicr
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                PluginDownloadURL = "github://api.github.com/pulumi-labs/pulumi-nvidia-aicr",
+                PluginDownloadURL = "github://api.github.com/pulumi/pulumi-nvidia-aicr",
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

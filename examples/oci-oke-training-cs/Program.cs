@@ -14,8 +14,8 @@ using Pulumi.Oci.Core;
 using Pulumi.Oci.Core.Inputs;
 using Pulumi.Oci.ContainerEngine;
 using Pulumi.Oci.ContainerEngine.Inputs;
-using Pulumi.Labs.NvidiaAicr;
-using Pulumi.Labs.NvidiaAicr.Inputs;
+using Pulumi.NvidiaAicr;
+using Pulumi.NvidiaAicr.Inputs;
 
 return await Deployment.RunAsync(() =>
 {

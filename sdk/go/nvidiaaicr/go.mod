@@ -1,4 +1,4 @@
-module github.com/pulumi-labs/pulumi-nvidia-aicr/sdk/go/nvidiaaicr
+module github.com/pulumi/pulumi-nvidia-aicr/sdk/go/nvidiaaicr
 
 go 1.27.0
 

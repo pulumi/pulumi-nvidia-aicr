@@ -24,17 +24,17 @@ GitHub releases on first use.
 
 | Language | Package |
 |---|---|
-| TypeScript / JavaScript | `npm install @pulumi-labs/nvidia-aicr` |
-| Python | `pip install pulumi-labs-nvidia-aicr` (module `pulumi_labs_nvidia_aicr`) |
-| Go | `go get github.com/pulumi-labs/pulumi-nvidia-aicr/sdk/go/nvidiaaicr` |
-| C# | `dotnet add package Pulumi.Labs.NvidiaAicr` |
-| Java | `com.pulumi.labs:nvidia-aicr` — build from [`sdk/java`](./sdk/java) (not yet on Maven Central) |
+| TypeScript / JavaScript | `npm install @pulumi/nvidia-aicr` |
+| Python | `pip install pulumi-nvidia-aicr` (module `pulumi_nvidia_aicr`) |
+| Go | `go get github.com/pulumi/pulumi-nvidia-aicr/sdk/go/nvidiaaicr` |
+| C# | `dotnet add package Pulumi.NvidiaAicr` |
+| Java | `com.pulumi:nvidia-aicr` — build from [`sdk/java`](./sdk/java) (not yet on Maven Central) |
 | YAML | no SDK; reference resources by type token (`nvidia-aicr:index:ClusterStack`, `nvidia-aicr:index:ValidationRun`) |
 
 To install the plugin manually (air-gapped CI, pinning):
 
 ```bash
-pulumi plugin install resource nvidia-aicr <version> --server github://api.github.com/pulumi-labs/pulumi-nvidia-aicr
+pulumi plugin install resource nvidia-aicr <version> --server github://api.github.com/pulumi/pulumi-nvidia-aicr
 ```
 
 > **Note:** provider binaries are published for Linux and macOS (amd64/arm64) only.
@@ -50,7 +50,7 @@ Deploy the validated stack onto an existing cluster (ambient kubeconfig: `~/.kub
 
 ```python
 import pulumi
-import pulumi_labs_nvidia_aicr as aicr
+import pulumi_nvidia_aicr as aicr
 
 # Deploy the NVIDIA AICR-validated GPU software stack for H100 + EKS + Kubeflow training.
 gpu_stack = aicr.ClusterStack("nvidia-aicr",
@@ -80,7 +80,7 @@ pulumi.export("validation_checks", validation.phase_results)
 
 ```typescript
 import * as eks from "@pulumi/eks";
-import * as aicr from "@pulumi-labs/nvidia-aicr";
+import * as aicr from "@pulumi/nvidia-aicr";
 
 // Create an EKS cluster with H100 GPU nodes
 const cluster = new eks.Cluster("gpu-cluster", {
@@ -252,7 +252,7 @@ Wire it to a `ClusterStack` so deployment and validation share one source of tru
 <summary>TypeScript</summary>
 
 ```typescript
-import * as aicr from "@pulumi-labs/nvidia-aicr";
+import * as aicr from "@pulumi/nvidia-aicr";
 
 const gpuStack = new aicr.ClusterStack("nvidia-aicr", {
     accelerator: "h100",
@@ -279,7 +279,7 @@ export const validationChecks = validation.phaseResults;
 
 ```python
 import pulumi
-import pulumi_labs_nvidia_aicr as aicr
+import pulumi_nvidia_aicr as aicr
 
 gpu_stack = aicr.ClusterStack("nvidia-aicr",
     accelerator="h100",
@@ -337,8 +337,8 @@ ctx.Export("validationChecks", validation.PhaseResults)
 
 ```csharp
 using Pulumi;
-using Pulumi.Labs.NvidiaAicr;
-using Pulumi.Labs.NvidiaAicr.Inputs;
+using Pulumi.NvidiaAicr;
+using Pulumi.NvidiaAicr.Inputs;
 
 var gpuStack = new ClusterStack("nvidia-aicr", new ClusterStackArgs
 {
@@ -377,11 +377,11 @@ return new Dictionary<string, object?>
 <summary>Java</summary>
 
 ```java
-import com.pulumi.labs.nvidiaaicr.ClusterStack;
-import com.pulumi.labs.nvidiaaicr.ClusterStackArgs;
-import com.pulumi.labs.nvidiaaicr.ValidationRun;
-import com.pulumi.labs.nvidiaaicr.ValidationRunArgs;
-import com.pulumi.labs.nvidiaaicr.inputs.RecipeCriteriaArgs;
+import com.pulumi.nvidiaaicr.ClusterStack;
+import com.pulumi.nvidiaaicr.ClusterStackArgs;
+import com.pulumi.nvidiaaicr.ValidationRun;
+import com.pulumi.nvidiaaicr.ValidationRunArgs;
+import com.pulumi.nvidiaaicr.inputs.RecipeCriteriaArgs;
 import com.pulumi.resources.CustomResourceOptions;
 import java.util.List;
 
@@ -699,7 +699,7 @@ and `kubectl delete crd ...`), or recreate the cluster (kind). One-time
 migration note: the first `pulumi up` after upgrading to v0.3.0 replaces
 every Helm release (physical names change) — use a maintenance window on
 live clusters. Background in
-[#18](https://github.com/pulumi-labs/pulumi-nvidia-aicr/issues/18).
+[#18](https://github.com/pulumi/pulumi-nvidia-aicr/issues/18).
 
 **In-place provider upgrade of a pre-v0.3.0 stack is not supported — destroy
 and recreate instead.** The replace-every-release described above can strand

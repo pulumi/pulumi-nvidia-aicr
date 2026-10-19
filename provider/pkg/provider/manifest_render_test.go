@@ -23,7 +23,7 @@ import (
 	"github.com/stretchr/testify/require"
 	"gopkg.in/yaml.v3"
 
-	"github.com/pulumi-labs/pulumi-nvidia-aicr/provider/pkg/aicr"
+	"github.com/pulumi/pulumi-nvidia-aicr/provider/pkg/aicr"
 )
 
 // TestRenderManifestBundleProducesValidYAML guards a long-standing finding:

@@ -23,7 +23,7 @@ import (
 	"helm.sh/helm/v3/pkg/chartutil"
 	"helm.sh/helm/v3/pkg/engine"
 
-	"github.com/pulumi-labs/pulumi-nvidia-aicr/provider/pkg/aicr"
+	"github.com/pulumi/pulumi-nvidia-aicr/provider/pkg/aicr"
 )
 
 // renderManifestBundle renders a component's raw manifest content through

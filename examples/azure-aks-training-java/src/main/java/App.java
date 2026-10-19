@@ -25,12 +25,12 @@ import com.pulumi.azurenative.containerservice.inputs.ManagedClusterIdentityArgs
 import com.pulumi.azurenative.resources.ResourceGroup;
 import com.pulumi.azurenative.resources.ResourceGroupArgs;
 import com.pulumi.core.Output;
-import com.pulumi.labs.nvidiaaicr.ClusterStack;
-import com.pulumi.labs.nvidiaaicr.ClusterStackArgs;
-import com.pulumi.labs.nvidiaaicr.ValidationRun;
-import com.pulumi.labs.nvidiaaicr.ValidationRunArgs;
-import com.pulumi.labs.nvidiaaicr.inputs.ComponentOverrideArgs;
-import com.pulumi.labs.nvidiaaicr.inputs.RecipeCriteriaArgs;
+import com.pulumi.nvidiaaicr.ClusterStack;
+import com.pulumi.nvidiaaicr.ClusterStackArgs;
+import com.pulumi.nvidiaaicr.ValidationRun;
+import com.pulumi.nvidiaaicr.ValidationRunArgs;
+import com.pulumi.nvidiaaicr.inputs.ComponentOverrideArgs;
+import com.pulumi.nvidiaaicr.inputs.RecipeCriteriaArgs;
 
 public class App {
     public static void main(String[] args) {

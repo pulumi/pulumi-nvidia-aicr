@@ -5,7 +5,7 @@ PROVIDER_DIR := provider
 BIN_DIR      := bin
 SCHEMA_FILE  := $(PROVIDER_DIR)/cmd/$(PROVIDER)/schema.json
 
-LDFLAGS := -X github.com/pulumi-labs/pulumi-nvidia-aicr/provider/pkg/version.Version=$(VERSION)
+LDFLAGS := -X github.com/pulumi/pulumi-nvidia-aicr/provider/pkg/version.Version=$(VERSION)
 
 .PHONY: all provider schema test lint clean install \
         nodejs_sdk python_sdk go_sdk dotnet_sdk java_sdk sdks \
@@ -53,7 +53,7 @@ python_sdk: schema
 go_sdk: schema
 	rm -rf sdk/go
 	pulumi package gen-sdk --language go $(SCHEMA_FILE) --version $(VERSION)
-	cd sdk/go/nvidiaaicr && go mod init github.com/pulumi-labs/pulumi-nvidia-aicr/sdk/go/nvidiaaicr && go mod tidy
+	cd sdk/go/nvidiaaicr && go mod init github.com/pulumi/pulumi-nvidia-aicr/sdk/go/nvidiaaicr && go mod tidy
 
 # Generate .NET SDK
 dotnet_sdk: schema
@@ -95,7 +95,7 @@ sdk_fixups:
 	@if [ -f sdk/python/pyproject.toml ]; then \
 		python3 -c 'import re,sys,pathlib; \
 p=pathlib.Path("sdk/python/pyproject.toml"); s=p.read_text(); \
-s=re.sub(r"^( *)readme = \"README\.md\"", "\\1readme = \"pulumi_labs_nvidia_aicr/README.md\"", s, flags=re.M); \
+s=re.sub(r"^( *)readme = \"README\.md\"", "\\1readme = \"pulumi_nvidia_aicr/README.md\"", s, flags=re.M); \
 s=re.sub(r"\n  \[project\.license\]\n    text = \"Apache-2\.0\"", "\n  license = \"Apache-2.0\"", s); \
 p.write_text(s)'; \
 	fi
@@ -105,13 +105,13 @@ p.write_text(s)'; \
 	@if [ -d sdk/dotnet ] && [ -f README.md ] && [ ! -f sdk/dotnet/README.md ]; then \
 		cp README.md sdk/dotnet/README.md; \
 	fi
-	@if [ -f sdk/dotnet/Pulumi.Labs.NvidiaAicr.csproj ] && ! grep -q PackageReadmeFile sdk/dotnet/Pulumi.Labs.NvidiaAicr.csproj; then \
-		sed -i.bak -E 's|(<PackageIcon>logo.png</PackageIcon>)|\1\n    <PackageReadmeFile>README.md</PackageReadmeFile>|' sdk/dotnet/Pulumi.Labs.NvidiaAicr.csproj && \
-		rm -f sdk/dotnet/Pulumi.Labs.NvidiaAicr.csproj.bak; \
+	@if [ -f sdk/dotnet/Pulumi.NvidiaAicr.csproj ] && ! grep -q PackageReadmeFile sdk/dotnet/Pulumi.NvidiaAicr.csproj; then \
+		sed -i.bak -E 's|(<PackageIcon>logo.png</PackageIcon>)|\1\n    <PackageReadmeFile>README.md</PackageReadmeFile>|' sdk/dotnet/Pulumi.NvidiaAicr.csproj && \
+		rm -f sdk/dotnet/Pulumi.NvidiaAicr.csproj.bak; \
 	fi
-	@if [ -f sdk/dotnet/Pulumi.Labs.NvidiaAicr.csproj ] && ! grep -q '<None Include="README.md">' sdk/dotnet/Pulumi.Labs.NvidiaAicr.csproj; then \
+	@if [ -f sdk/dotnet/Pulumi.NvidiaAicr.csproj ] && ! grep -q '<None Include="README.md">' sdk/dotnet/Pulumi.NvidiaAicr.csproj; then \
 		python3 -c 'import pathlib; \
-p=pathlib.Path("sdk/dotnet/Pulumi.Labs.NvidiaAicr.csproj"); s=p.read_text(); \
+p=pathlib.Path("sdk/dotnet/Pulumi.NvidiaAicr.csproj"); s=p.read_text(); \
 needle="<None Include=\"logo.png\">\n      <Pack>True</Pack>\n      <PackagePath></PackagePath>\n    </None>"; \
 addition=needle + "\n    <None Include=\"README.md\">\n      <Pack>True</Pack>\n      <PackagePath></PackagePath>\n    </None>"; \
 p.write_text(s.replace(needle, addition, 1))'; \
@@ -122,7 +122,7 @@ p.write_text(s.replace(needle, addition, 1))'; \
 #     and add `options.release = 11` so emitted bytecode stays Java 11.
 #   - fill the POM <name> (pulumi-java-gen emits an empty `name = ""`
 #     unless Publisher == "pulumi", which would also clobber our
-#     com.pulumi.labs groupId; tracked upstream).
+#     com.pulumi groupId; tracked upstream).
 	@if [ -f sdk/java/build.gradle ] && ! grep -q 'options.release = 11' sdk/java/build.gradle; then \
 		python3 -c 'import pathlib; \
 p=pathlib.Path("sdk/java/build.gradle"); s=p.read_text(); \
@@ -133,7 +133,7 @@ p.write_text(s)'; \
 	@if [ -f sdk/java/build.gradle ] && grep -q 'name = ""' sdk/java/build.gradle; then \
 		python3 -c 'import pathlib; \
 p=pathlib.Path("sdk/java/build.gradle"); s=p.read_text(); \
-s=s.replace("name = \"\"", "name = \"pulumi-labs-nvidia-aicr\"", 1); \
+s=s.replace("name = \"\"", "name = \"pulumi-nvidia-aicr\"", 1); \
 p.write_text(s)'; \
 	fi
 # The generated package.json has no main/types/files; with no .npmignore npm

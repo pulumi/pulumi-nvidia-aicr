@@ -12,8 +12,8 @@
 // install -- which is enough for iterating on the deployment graph.
 using System.Collections.Generic;
 using Pulumi;
-using Pulumi.Labs.NvidiaAicr;
-using Pulumi.Labs.NvidiaAicr.Inputs;
+using Pulumi.NvidiaAicr;
+using Pulumi.NvidiaAicr.Inputs;
 
 return await Deployment.RunAsync(() =>
 {

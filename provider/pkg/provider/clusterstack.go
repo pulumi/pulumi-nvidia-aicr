@@ -29,7 +29,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	sigsyaml "sigs.k8s.io/yaml"
 
-	"github.com/pulumi-labs/pulumi-nvidia-aicr/provider/pkg/aicr"
+	"github.com/pulumi/pulumi-nvidia-aicr/provider/pkg/aicr"
 )
 
 // builtinNamespaces are Kubernetes built-in namespaces that always exist and

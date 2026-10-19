@@ -49,7 +49,7 @@ import (
 	"k8s.io/client-go/tools/clientcmd"
 	clientcmdapi "k8s.io/client-go/tools/clientcmd/api"
 
-	"github.com/pulumi-labs/pulumi-nvidia-aicr/provider/pkg/aicr"
+	"github.com/pulumi/pulumi-nvidia-aicr/provider/pkg/aicr"
 )
 
 // supportedPhases is the allowlist for the `phases` input.

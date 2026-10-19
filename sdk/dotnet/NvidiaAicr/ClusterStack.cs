@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Pulumi.Serialization;
 using Pulumi;
 
-namespace Pulumi.Labs.NvidiaAicr
+namespace Pulumi.NvidiaAicr
 {
     [NvidiaAicrResourceType("nvidia-aicr:index:ClusterStack")]
     public partial class ClusterStack : global::Pulumi.ComponentResource
@@ -64,7 +64,7 @@ namespace Pulumi.Labs.NvidiaAicr
             var defaultOptions = new ComponentResourceOptions
             {
                 Version = Utilities.Version,
-                PluginDownloadURL = "github://api.github.com/pulumi-labs/pulumi-nvidia-aicr",
+                PluginDownloadURL = "github://api.github.com/pulumi/pulumi-nvidia-aicr",
             };
             var merged = ComponentResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

@@ -8,7 +8,7 @@ plugins {
     id("io.github.gradle-nexus.publish-plugin") version "2.0.0"
 }
 
-group = "com.pulumi.labs"
+group = "com.pulumi"
 
 def resolvedVersion = System.getenv("PACKAGE_VERSION") ?:
     (project.version == "unspecified"
@@ -71,7 +71,7 @@ def genPulumiResources = tasks.register('genPulumiResources') {
         builder {
             resource true
             name "nvidia-aicr"
-            server "github://api.github.com/pulumi-labs/pulumi-nvidia-aicr"
+            server "github://api.github.com/pulumi/pulumi-nvidia-aicr"
             version resolvedVersion
         }
         def infoJson = builder.toPrettyString()
@@ -86,7 +86,7 @@ jar.configure {
 publishing {
     publications {
         mainPublication(MavenPublication) {
-            groupId = "com.pulumi.labs"
+            groupId = "com.pulumi"
             artifactId = "nvidia-aicr"
             version = resolvedVersion
             from components.java
@@ -95,16 +95,16 @@ publishing {
 
             pom {
                 inceptionYear = ""
-                name = "pulumi-labs-nvidia-aicr"
+                name = "pulumi-nvidia-aicr"
                 packaging = "jar"
                 description = "Deploy validated NVIDIA AI Cluster Runtime (AICR) recipes for GPU-accelerated Kubernetes clusters."
 
-                url = "https://github.com/pulumi-labs/pulumi-nvidia-aicr"
+                url = "https://github.com/pulumi/pulumi-nvidia-aicr"
 
                 scm {
-                    connection = "git@github.com/pulumi-labs/pulumi-nvidia-aicr.git"
-                    developerConnection = "git@github.com/pulumi-labs/pulumi-nvidia-aicr.git"
-                    url = "https://github.com/pulumi-labs/pulumi-nvidia-aicr"
+                    connection = "git@github.com/pulumi/pulumi-nvidia-aicr.git"
+                    developerConnection = "git@github.com/pulumi/pulumi-nvidia-aicr.git"
+                    url = "https://github.com/pulumi/pulumi-nvidia-aicr"
                 }
 
                 licenses {

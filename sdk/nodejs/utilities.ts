@@ -53,7 +53,7 @@ export function getVersion(): string {
 
 /** @internal */
 export function resourceOptsDefaults(): any {
-    return { version: getVersion(), pluginDownloadURL: "github://api.github.com/pulumi-labs/pulumi-nvidia-aicr" };
+    return { version: getVersion(), pluginDownloadURL: "github://api.github.com/pulumi/pulumi-nvidia-aicr" };
 }
 
 /** @internal */

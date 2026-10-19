@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Pulumi.Serialization;
 using Pulumi;
 
-namespace Pulumi.Labs.NvidiaAicr.Outputs
+namespace Pulumi.NvidiaAicr.Outputs
 {
 
     /// <summary>

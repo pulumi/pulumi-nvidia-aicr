@@ -14,11 +14,11 @@ order.
 The AICR provider is available as a package in all Pulumi-supported
 languages:
 
-* JavaScript/TypeScript: [`@pulumi-labs/nvidia-aicr`](https://www.npmjs.com/package/@pulumi-labs/nvidia-aicr)
-* Python: [`pulumi-labs-nvidia-aicr`](https://pypi.org/project/pulumi-labs-nvidia-aicr/)
-* Go: [`github.com/pulumi-labs/pulumi-nvidia-aicr/sdk/go/nvidiaaicr`](https://github.com/pulumi-labs/pulumi-nvidia-aicr)
-* .NET: [`Pulumi.Labs.NvidiaAicr`](https://www.nuget.org/packages/Pulumi.Labs.NvidiaAicr)
-* Java: [`com.pulumi.labs:nvidia-aicr`](https://central.sonatype.com/artifact/com.pulumi.labs/nvidia-aicr)
+* JavaScript/TypeScript: [`@pulumi/nvidia-aicr`](https://www.npmjs.com/package/@pulumi/nvidia-aicr)
+* Python: [`pulumi-nvidia-aicr`](https://pypi.org/project/pulumi-nvidia-aicr/)
+* Go: [`github.com/pulumi/pulumi-nvidia-aicr/sdk/go/nvidiaaicr`](https://github.com/pulumi/pulumi-nvidia-aicr)
+* .NET: [`Pulumi.NvidiaAicr`](https://www.nuget.org/packages/Pulumi.NvidiaAicr)
+* Java: [`com.pulumi:nvidia-aicr`](https://central.sonatype.com/artifact/com.pulumi/nvidia-aicr)
 
 ## Example Usage
 
@@ -29,7 +29,7 @@ cluster (here, a local `kind` cluster suitable for development; replace
 {{< chooser language "typescript,python,go,csharp,java,yaml" >}}
 {{% choosable language typescript %}}
 ```typescript
-import * as aicr from "@pulumi-labs/nvidia-aicr";
+import * as aicr from "@pulumi/nvidia-aicr";
 
 const stack = new aicr.ClusterStack("aicr", {
     accelerator: "h100",
@@ -40,7 +40,7 @@ const stack = new aicr.ClusterStack("aicr", {
 {{% /choosable %}}
 {{% choosable language python %}}
 ```python
-import pulumi_labs_nvidia_aicr as aicr
+import pulumi_nvidia_aicr as aicr
 
 aicr.ClusterStack(
     "aicr",
@@ -55,7 +55,7 @@ aicr.ClusterStack(
 package main
 
 import (
-    aicr "github.com/pulumi-labs/pulumi-nvidia-aicr/sdk/go/nvidiaaicr"
+    aicr "github.com/pulumi/pulumi-nvidia-aicr/sdk/go/nvidiaaicr"
     "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -73,7 +73,7 @@ func main() {
 {{% /choosable %}}
 {{% choosable language csharp %}}
 ```csharp
-using Pulumi.Labs.NvidiaAicr;
+using Pulumi.NvidiaAicr;
 
 return await Pulumi.Deployment.RunAsync(() =>
 {
@@ -89,8 +89,8 @@ return await Pulumi.Deployment.RunAsync(() =>
 {{% choosable language java %}}
 ```java
 import com.pulumi.Pulumi;
-import com.pulumi.labs.nvidiaaicr.ClusterStack;
-import com.pulumi.labs.nvidiaaicr.ClusterStackArgs;
+import com.pulumi.nvidiaaicr.ClusterStack;
+import com.pulumi.nvidiaaicr.ClusterStackArgs;
 
 public final class App {
     public static void main(String[] args) {
@@ -120,7 +120,7 @@ resources:
 
 For cloud-targeted scenarios (EKS, AKS, GKE, OKE, CoreWeave), see the
 runnable per-language programs under
-[`examples/`](https://github.com/pulumi-labs/pulumi-nvidia-aicr/tree/main/examples)
+[`examples/`](https://github.com/pulumi/pulumi-nvidia-aicr/tree/main/examples)
 in the provider repository.
 
 ## Configuration

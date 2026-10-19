@@ -12,11 +12,11 @@
 import com.pulumi.Context;
 import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
-import com.pulumi.labs.nvidiaaicr.ClusterStack;
-import com.pulumi.labs.nvidiaaicr.ClusterStackArgs;
-import com.pulumi.labs.nvidiaaicr.ValidationRun;
-import com.pulumi.labs.nvidiaaicr.ValidationRunArgs;
-import com.pulumi.labs.nvidiaaicr.inputs.RecipeCriteriaArgs;
+import com.pulumi.nvidiaaicr.ClusterStack;
+import com.pulumi.nvidiaaicr.ClusterStackArgs;
+import com.pulumi.nvidiaaicr.ValidationRun;
+import com.pulumi.nvidiaaicr.ValidationRunArgs;
+import com.pulumi.nvidiaaicr.inputs.RecipeCriteriaArgs;
 import java.util.Map;
 import java.util.stream.Collectors;
 

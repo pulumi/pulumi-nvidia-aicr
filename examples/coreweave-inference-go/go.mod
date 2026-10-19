@@ -1,9 +1,9 @@
-module github.com/pulumi-labs/pulumi-nvidia-aicr/examples/coreweave-inference-go
+module github.com/pulumi/pulumi-nvidia-aicr/examples/coreweave-inference-go
 
 go 1.27.0
 
 require (
-	github.com/pulumi-labs/pulumi-nvidia-aicr/sdk/go/nvidiaaicr v0.3.0
+	github.com/pulumi/pulumi-nvidia-aicr/sdk/go/nvidiaaicr v0.3.0
 	github.com/pulumi/pulumi/sdk/v3 v3.242.0
 )
 

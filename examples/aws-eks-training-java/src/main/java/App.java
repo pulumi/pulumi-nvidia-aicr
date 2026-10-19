@@ -25,12 +25,12 @@ import com.pulumi.aws.ec2.VpcArgs;
 import com.pulumi.aws.ec2.inputs.RouteTableRouteArgs;
 import com.pulumi.eks.Cluster;
 import com.pulumi.eks.ClusterArgs;
-import com.pulumi.labs.nvidiaaicr.ClusterStack;
-import com.pulumi.labs.nvidiaaicr.ClusterStackArgs;
-import com.pulumi.labs.nvidiaaicr.ValidationRun;
-import com.pulumi.labs.nvidiaaicr.ValidationRunArgs;
-import com.pulumi.labs.nvidiaaicr.inputs.ComponentOverrideArgs;
-import com.pulumi.labs.nvidiaaicr.inputs.RecipeCriteriaArgs;
+import com.pulumi.nvidiaaicr.ClusterStack;
+import com.pulumi.nvidiaaicr.ClusterStackArgs;
+import com.pulumi.nvidiaaicr.ValidationRun;
+import com.pulumi.nvidiaaicr.ValidationRunArgs;
+import com.pulumi.nvidiaaicr.inputs.ComponentOverrideArgs;
+import com.pulumi.nvidiaaicr.inputs.RecipeCriteriaArgs;
 
 public class App {
     public static void main(String[] args) {

@@ -31,6 +31,7 @@ jobs:
           # https://github.com/NVIDIA/aicr/issues (windows cross-compilation).
     steps:
       - uses: actions/checkout@v5
+      - uses: ./.github/actions/free-disk-space
       - uses: actions/setup-go@v5
         with:
           go-version: '1.27'
@@ -67,6 +68,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+      - uses: ./.github/actions/free-disk-space
       - uses: actions/setup-go@v5
         with:
           go-version: '1.27'

@@ -1,0 +1,6 @@
+name: aicr-provider-delivery
+runtime: nodejs
+description: >-
+  Delivery pipeline for the Pulumi NVIDIA AICR provider: build, test, preview an example against the freshly built provider, then a gated deploy and teardown.
+packages:
+  delivery: delivery@0.0.1-alpha.5

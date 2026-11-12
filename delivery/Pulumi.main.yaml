@@ -1,6 +1,6 @@
 config:
   aicr-provider-delivery:repository: pulumi/pulumi-nvidia-aicr
-  aicr-provider-delivery:branch: delivery-pipeline
+  aicr-provider-delivery:branch: main
   aicr-provider-delivery:example: examples/aws-eks-inference-ts
   aicr-provider-delivery:awsEnvironment: pequod/cloud-access/aws-access
   aicr-provider-delivery:targetStack: pequod/aws-eks-h100-inference/dev
